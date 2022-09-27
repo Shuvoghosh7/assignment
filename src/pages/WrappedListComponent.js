@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react';
 import SingleListItem from './SingleListItem';
-import {PropTypes} from 'prop-types';
+import PropTypes from 'prop-types';
 
 
 const WrappedListComponent = (items) => {
@@ -13,11 +13,11 @@ const WrappedListComponent = (items) => {
     const handleClick = index => {
         setSelectedIndex(index);
     };
-    const arr=[1,33,34,35,50]
+/*     const arr=[1,2,3] */
     return (
         <div>
         <ul style={{ textAlign: 'left' }}>
-            {arr.map((item, index) => (
+            {items.map((item, index) => (
                 <SingleListItem
                     onClickHandler={() => handleClick(index)}
                     text={item.text}
@@ -30,8 +30,10 @@ const WrappedListComponent = (items) => {
     );
 };
 WrappedListComponent.propTypes = {
+    items: PropTypes.array(PropTypes.shape({
       text: PropTypes.string.isRequired,
-}
+    })),
+  };
 WrappedListComponent.defaultProps = {
     items: null,
 };
